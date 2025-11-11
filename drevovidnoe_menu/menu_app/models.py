@@ -46,6 +46,5 @@ class MenuItem(models.Model):
             try:
                 return reverse(self.named_url, kwargs=self.named_url_kwargs or {})
             except NoReverseMatch:
-                # Failing reverse — still return placeholder (or keep as-is)
                 return '#'
         return self.url or '#'
