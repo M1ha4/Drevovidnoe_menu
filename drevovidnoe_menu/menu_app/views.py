@@ -1,16 +1,14 @@
 from django.shortcuts import render
+from .models import MenuItem
 
-def home(request):
-    return render(request, 'home.html')
+def menu_view(request):
+    """
+    Этот view не обязателен для работы шаблонного тега,
+    но полезен, чтобы протестировать отображение меню отдельно.
+    """
+    # Можно передать все элементы меню для проверки
+    menu_items = MenuItem.objects.all().select_related('parent', 'menu')
 
-def about(request):
-    return render(request, 'about.html')
-
-def team(request):
-    return render(request, 'team.html')
-
-def projects(request):
-    return render(request, 'projects.html')
-
-def contact(request):
-    return render(request, 'contact.html')
+    return render(request, 'menu/menu_debug.html', {
+        'menu_items': menu_items,
+    })

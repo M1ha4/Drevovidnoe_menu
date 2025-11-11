@@ -1,8 +1,5 @@
-{# menu_app/menu.html #}
 <ul class="menu menu-{{ menu_name }}">
   {% for node in roots %}
     {% include "menu_app/menu_node.html" with node=node level=0 %}
-  {% empty %}
-    {# no items #}
   {% endfor %}
 </ul>

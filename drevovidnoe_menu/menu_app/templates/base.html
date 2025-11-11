@@ -1,23 +1,36 @@
 {% load menu_tags %}
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>{% block title %}My Site{% endblock %}</title>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Сайт{% endblock %}</title>
     <style>
-      .menu { list-style: none; padding-left: 0; }
-      .submenu { margin-left: 1rem; list-style: none; }
-      .active > a { font-weight: bold; color: darkred; }
+        body { font-family: Arial, sans-serif; }
+        ul { list-style: none; padding-left: 1rem; }
+        li { margin: 3px 0; }
+        .menu .active > a { font-weight: bold; color: darkred; }
+        .menu .expanded > a::after { content: " ▾"; }
+        .menu a { text-decoration: none; color: #333; }
+        .menu a:hover { text-decoration: underline; }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <header>
-      <h1>My Site</h1>
-      {% draw_menu 'main_menu' %}
+        <h1>Мой сайт</h1>
     </header>
 
+    <aside>
+        <!-- Меню -->
+        {% draw_menu 'main_menu' %}
+    </aside>
+
     <main>
-      {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
     </main>
-  </body>
+
+    <footer>
+        <p>© 2025 Мой сайт</p>
+    </footer>
+</body>
 </html>

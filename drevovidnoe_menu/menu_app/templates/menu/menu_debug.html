@@ -1,0 +1,32 @@
+{% load menu_tags %}
+<!doctype html>
+<html>
+<head>
+    <title>Debug Menu</title>
+    <style>
+        ul { list-style: none; padding-left: 1rem; }
+        li { margin: 3px 0; }
+        .active > a { font-weight: bold; color: darkred; }
+        .expanded > a::after { content: " ▾"; }
+    </style>
+</head>
+<body>
+    <h1>Debug Menu View</h1>
+
+    <h2>Через шаблонный тег:</h2>
+    {% draw_menu 'main_menu' %}
+
+    <h2>Все пункты меню из базы (для отладки):</h2>
+    <ul>
+        {% for item in menu_items %}
+            <li>
+                {{ item.title }}
+                {% if item.parent %} (родитель: {{ item.parent.title }}){% endif %}
+                — URL: {{ item.get_resolved_url }}
+            </li>
+        {% empty %}
+            <li>Пунктов меню нет</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

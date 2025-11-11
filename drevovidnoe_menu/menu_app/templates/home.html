@@ -1,6 +1,21 @@
-{% extends "base.html" %}
-{% block title %}Главная{% endblock %}
-{% block content %}
-<h2>Главная страница</h2>
-<p>Добро пожаловать!</p>
-{% endblock %}
+{% load menu_tags %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Мой сайт</title>
+  <style>
+    ul { list-style: none; padding-left: 10px; }
+    li.active > a { font-weight: bold; color: darkred; }
+  </style>
+</head>
+<body>
+  <nav>
+    {% draw_menu 'main_menu' %}
+  </nav>
+  <hr>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
