@@ -1,0 +1,23 @@
+{% load menu_tags %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}My Site{% endblock %}</title>
+    <style>
+      .menu { list-style: none; padding-left: 0; }
+      .submenu { margin-left: 1rem; list-style: none; }
+      .active > a { font-weight: bold; color: darkred; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>My Site</h1>
+      {% draw_menu 'main_menu' %}
+    </header>
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>
